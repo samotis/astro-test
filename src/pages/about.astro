@@ -8,9 +8,24 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 );
 
 const seo = {
-  title: 'Simple Blog | A template by Little Sticks',
-  description: 'A simple blog template for Astro by Little Sticks',
+  title: 'About',
+  description: 'A simple blog template for Astro',
 }
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+}
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <style>
@@ -25,9 +40,27 @@ const seo = {
 <Layout seo={seo}>
   <Container>
     <div class="home-hero-text__container">
-      <h1 class="fade-in">About</h1>
+      <h1 class="fade-in">{pageTitle}</h1>
       <p>This is the about page. It tells about.</p>
     </div>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+      {identity.hobbies.length >= 2 &&
+        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
   </Container>
 </Layout>
 

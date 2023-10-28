@@ -8,9 +8,11 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 );
 
 const seo = {
-  title: 'Simple Blog | A template by Little Sticks',
-  description: 'A simple blog template for Astro by Little Sticks',
+  title: 'Blog List',
+  description: 'A simple blog template for Astro',
 }
+
+const pageTitle = "Blog List";
 ---
 
 <style>
@@ -25,7 +27,7 @@ const seo = {
 <Layout seo={seo}>
   <Container>
     <div class="home-hero-text__container">
-      <h1 class="fade-in">Blog List</h1>
+      <h1 class="fade-in">{pageTitle}</h1>
       <p>The best of the best. That is what you will find here.</p>
     </div>
   </Container>
